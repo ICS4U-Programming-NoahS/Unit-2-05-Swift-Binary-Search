@@ -54,18 +54,16 @@ func binarySearch(arrayInt: [Int], userNumInt: Int) -> Int {
         let mid = low + (high - low) / 2
 
         // Check if user's number is equal to the mid
-        if (arrayInt[mid] == userNumInt) {
+        if arrayInt[mid] == userNumInt {
 
             // return the index
             return mid
 
         // If the user number is greater, ignore left half of array
-        }  else if (arrayInt[mid] < userNumInt) {
+        } else if arrayInt[mid] < userNumInt {
             // reset the low
             low = mid + 1
-
-        // If the user's number is smaller, ignore right half of array
-        }  else {
+        } else {
             // reset the high
             high = mid - 1
         }
@@ -73,7 +71,6 @@ func binarySearch(arrayInt: [Int], userNumInt: Int) -> Int {
 
     // If we reach here, then the user's number is not found in the array
     return -1
-    
 }
 
 // Greeting
@@ -117,7 +114,7 @@ repeat {
                 let index = binarySearch(arrayInt: arrayNumber, userNumInt: userNumInt)
 
                 // if number is not found in array
-                if (index == -1) {
+                if index == -1 {
                     print("\(userNumInt) is not in the array.")
                 } else {
                     print("\(userNumInt) is found at index \(index).")
@@ -126,9 +123,14 @@ repeat {
                 // If user does not enter an integer
                 throw InputError.invalidInput
             }
+
+        // If user does not enter an integer
         } catch InputError.invalidInput {
-            // If user does not enter an integer
             print("\(userNum) is not an integer.")
+
+        // If some other error occurs
+        } catch {
+            print("Error.")
         }
     }
 
